@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:12.4
-    container_name: task-management
+    container_name: tasks
     ports:
       - "5432:5432"
     volumes:
@@ -12,7 +12,7 @@ services:
     networks:
       - nestjs
     environment:
-      - POSTGRES_DB=task-management
+      - POSTGRES_DB=taskmanagement
       - POSTGRES_USER=nestjs
       - POSTGRES_PASSWORD=nestjs
 
