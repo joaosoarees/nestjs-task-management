@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:12.4
+    container_name: task-management
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+      - ./docker/postgres/backup:/backup
+    networks:
+      - nestjs
+    environment:
+      - POSTGRES_DB=task-management
+      - POSTGRES_USER=nestjs
+      - POSTGRES_PASSWORD=nestjs
+
+networks:
+  nestjs:
+    driver: bridge
