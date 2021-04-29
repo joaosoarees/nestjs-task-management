@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Entity({
   name: 'users',
@@ -19,4 +20,10 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  async validatePassword(password: string): Promise<boolean> {
+    const hash = await bcrypt.hash(password, this.password);
+
+    return hash === this.password;
+  }
 }
