@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Task } from 'src/tasks/task.entity';
-import { type } from 'node:os';
 
 @Entity({
   name: 'users',

@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -24,6 +25,7 @@ export class Task extends BaseEntity {
   @Column()
   status: TaskStatus;
 
-  @ManyToOne((type) => User, (user) => user.tasks, { eager: false })
+  @ManyToOne((type) => User, { eager: false })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
